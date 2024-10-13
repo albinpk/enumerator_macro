@@ -2,3 +2,5 @@ name: EnumeratorMacro
 
 packages:
   - packages/*
+
+sdkPath: .fvm/flutter_sdk
