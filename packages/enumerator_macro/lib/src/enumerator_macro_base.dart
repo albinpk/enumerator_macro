@@ -19,6 +19,8 @@ macro class Enumerator implements ClassDeclarationsMacro {
 
     _buildBoolGetters(builder, fields);
 
+    _buildIsInMethod(builder, name);
+
     _buildFromNameConstructor(builder, name);
     _buildFromNameOrNullMethod(builder, name);
 
@@ -101,6 +103,19 @@ macro class Enumerator implements ClassDeclarationsMacro {
         for (final f in fields) ...[
           '  bool get is${f.identifier.name.cap} => _self == ${f.identifier.name};\n\n',
         ],
+      ]),
+    );
+  }
+
+  void _buildIsInMethod(
+    MemberDeclarationBuilder builder,
+    String name,
+  ) {
+    builder.declareInType(
+      DeclarationCode.fromParts([
+        '  bool isIn(Iterable<$name> values) {\n',
+        '    return values.contains(this);\n',
+        '  }\n',
       ]),
     );
   }

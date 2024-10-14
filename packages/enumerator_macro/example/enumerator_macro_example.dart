@@ -37,6 +37,8 @@ void main(List<String> args) {
   myEnum.isTwo; // false
   myEnum.isThree; // false
 
+  myEnum.isIn({MyEnum.one, MyEnum.two}); // true
+
   // Get enum from name
   final MyEnum one = MyEnum.fromName('one');
   final MyEnum? oneOrNull = MyEnum.fromNameOrNull('one');
